@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,25 +12,40 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="meme_test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Doy-5A-mPF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DFW-Ga-ENu">
-                                        <rect key="frame" x="-87" y="193" width="588" height="383"/>
+                                        <rect key="frame" x="-87" y="151" width="549" height="383"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="383" id="z5F-dH-laM"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jSI-zJ-1FO" userLabel="TopTextField">
-                                        <rect key="frame" x="85" y="193" width="244" height="16"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="89" y="165" width="205" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="topText"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vne-g1-Snf" userLabel="BottomTextField">
-                                        <rect key="frame" x="85" y="557.5" width="244" height="18.5"/>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-vO-ad5">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <items>
+                                            <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="iky-nY-8HD">
+                                                <connections>
+                                                    <action selector="shareMeme:" destination="BYZ-38-t0r" id="kdS-rh-agh"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="bottomText" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vne-g1-Snf" userLabel="BottomTextField">
+                                        <rect key="frame" x="85" y="496" width="205" height="18.333333333333371"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="bottomText"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
@@ -38,18 +53,18 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="DFW-Ga-ENu" firstAttribute="centerY" secondItem="Doy-5A-mPF" secondAttribute="centerY" id="GEh-lM-Ycx"/>
-                                    <constraint firstItem="vne-g1-Snf" firstAttribute="leading" secondItem="jSI-zJ-1FO" secondAttribute="leading" id="Iah-Sj-T6w"/>
-                                    <constraint firstItem="vne-g1-Snf" firstAttribute="bottom" secondItem="DFW-Ga-ENu" secondAttribute="bottom" id="MuW-jD-WzD"/>
-                                    <constraint firstItem="jSI-zJ-1FO" firstAttribute="centerX" secondItem="DFW-Ga-ENu" secondAttribute="centerX" id="PGx-ZV-aj1"/>
+                                    <constraint firstItem="vne-g1-Snf" firstAttribute="leading" secondItem="jSI-zJ-1FO" secondAttribute="leading" constant="-4" id="Iah-Sj-T6w"/>
+                                    <constraint firstItem="vne-g1-Snf" firstAttribute="bottom" secondItem="DFW-Ga-ENu" secondAttribute="bottom" constant="-19.666666666666629" id="MuW-jD-WzD"/>
+                                    <constraint firstItem="jSI-zJ-1FO" firstAttribute="centerX" secondItem="DFW-Ga-ENu" secondAttribute="centerX" constant="4" id="PGx-ZV-aj1"/>
                                     <constraint firstItem="DFW-Ga-ENu" firstAttribute="leading" secondItem="Doy-5A-mPF" secondAttribute="leading" constant="-87" id="SgI-6l-Ef8"/>
                                     <constraint firstItem="DFW-Ga-ENu" firstAttribute="centerX" secondItem="Doy-5A-mPF" secondAttribute="centerX" id="fwm-c1-YDH"/>
-                                    <constraint firstItem="vne-g1-Snf" firstAttribute="trailing" secondItem="jSI-zJ-1FO" secondAttribute="trailing" id="jWp-dg-xgz"/>
-                                    <constraint firstItem="jSI-zJ-1FO" firstAttribute="leading" secondItem="Doy-5A-mPF" secondAttribute="leading" constant="85" id="jlf-sn-VGd"/>
-                                    <constraint firstItem="DFW-Ga-ENu" firstAttribute="top" secondItem="jSI-zJ-1FO" secondAttribute="top" id="zhy-O3-Uik"/>
+                                    <constraint firstItem="vne-g1-Snf" firstAttribute="trailing" secondItem="jSI-zJ-1FO" secondAttribute="trailing" constant="-4" id="jWp-dg-xgz"/>
+                                    <constraint firstItem="jSI-zJ-1FO" firstAttribute="leading" secondItem="Doy-5A-mPF" secondAttribute="leading" constant="89" id="jlf-sn-VGd"/>
+                                    <constraint firstItem="DFW-Ga-ENu" firstAttribute="top" secondItem="jSI-zJ-1FO" secondAttribute="top" constant="-14" id="zhy-O3-Uik"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ess-n1-3Wv">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iN4-gc-W9v"/>
                                     <barButtonItem title="Take Photo" id="xe9-hV-J06">
@@ -81,9 +96,12 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="vne-g1-Snf" id="I4x-Qj-dhQ"/>
+                        <outlet property="bottomToolbar" destination="Ess-n1-3Wv" id="Nmm-YY-jDx"/>
                         <outlet property="cameraButton" destination="xe9-hV-J06" id="MeM-D5-WdL"/>
                         <outlet property="imageView" destination="DFW-Ga-ENu" id="Dpg-Rl-zDs"/>
+                        <outlet property="shareButton" destination="iky-nY-8HD" id="8Cz-Ic-GWp"/>
                         <outlet property="topTextField" destination="jSI-zJ-1FO" id="z7f-Wh-uiG"/>
+                        <outlet property="topToolbar" destination="2Vy-vO-ad5" id="Uc1-NN-fV9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -91,4 +109,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+    </resources>
 </document>
