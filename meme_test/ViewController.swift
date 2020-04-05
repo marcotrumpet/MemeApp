@@ -27,7 +27,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSAttributedString.Key.backgroundColor: UIColor.clear
     ]
     
-//    let memedImage = UIImage()
     var meme = MemeStruct(topText: "", bottomText: "", selectedImage: UIImage(), memedImage: UIImage())
     
     override func viewDidLoad() {
@@ -40,8 +39,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         bottomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.textAlignment = NSTextAlignment.center
         bottomTextField.textAlignment = NSTextAlignment.center
-//        topTextField.borderStyle = UITextField.BorderStyle.none
-//        topTextField.textColor = UIColor.white
         
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
