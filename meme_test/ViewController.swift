@@ -18,6 +18,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -27,21 +28,20 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSAttributedString.Key.backgroundColor: UIColor.clear
     ]
     
-    var meme = MemeStruct(topText: "", bottomText: "", selectedImage: UIImage(), memedImage: UIImage())
+    var meme = MemeStruct(topText: "", bottomText: "", selectedImage: nil, memedImage: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
-        shareButton.isEnabled = meme.isMemeReady()
+        checkTopToolbarButton()
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.textAlignment = NSTextAlignment.center
         bottomTextField.textAlignment = NSTextAlignment.center
         
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        initMemeGenerator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +63,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             imageView.contentMode = .scaleAspectFit
             imageView.image = pickedImage
             meme.selectedImage = imageView.image!
-            shareButton.isEnabled = meme.isMemeReady()
+            checkTopToolbarButton()
         }
         
         dismiss(animated: true, completion: nil)
@@ -84,7 +84,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         } else {
             meme.bottomText = textField.text!
         }
-        shareButton.isEnabled = meme.isMemeReady()
+        checkTopToolbarButton()
     }
     
     //MARK: Actions
@@ -107,10 +107,29 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func shareMeme(_ sender: Any) {
         saveMeme()
-        let share = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
+        let share = UIActivityViewController(activityItems: [meme.memedImage!], applicationActivities: nil)
         present(share, animated: true)
+        
+        share.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed:
+        Bool, arrayReturnedItems: [Any]?, error: Error?) in
+            if completed {
+                self.presentAlert(title: "Yay", message: "Meme shared")
+                return
+            } else {
+                self.presentAlert(title: "Ups", message: "Meme not shared")
+            }
+            if let shareError = error {
+                self.presentAlert(title: "Ups", message: shareError.localizedDescription)
+            }
+        }
     }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        initMemeGenerator()
+    }
+    
+    
     //MARK: Functions
     
     func subscribeToKeyboardNotifications() {
@@ -157,6 +176,25 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topToolbar.isHidden = false
         bottomToolbar.isHidden = false
         return memedImage
+    }
+    
+    func checkTopToolbarButton() {
+        shareButton.isEnabled = meme.isMemeReady()
+        cancelButton.isEnabled = meme.isMemeInProgress()
+    }
+    
+    func initMemeGenerator() {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imageView.image = nil
+        meme = MemeStruct(topText: "", bottomText: "", selectedImage: nil, memedImage: nil)
+        checkTopToolbarButton()
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert,animated: true,completion: nil)
     }
 }
 

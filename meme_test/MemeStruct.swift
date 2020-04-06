@@ -13,9 +13,14 @@ struct MemeStruct {
     var topText: String
     var bottomText: String
     var selectedImage: UIImage?
-    var memedImage: UIImage
+    var memedImage: UIImage?
     
     func isMemeReady() -> Bool {
         return (!self.topText.isEmpty && !self.bottomText.isEmpty && self.selectedImage != nil)
     }
+    
+    func isMemeInProgress() -> Bool {
+        return (!self.topText.isEmpty || !self.bottomText.isEmpty || self.selectedImage != nil)
+    }
+    
 }

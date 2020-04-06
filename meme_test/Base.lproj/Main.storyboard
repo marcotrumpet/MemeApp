@@ -40,6 +40,12 @@
                                                     <action selector="shareMeme:" destination="BYZ-38-t0r" id="kdS-rh-agh"/>
                                                 </connections>
                                             </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="OUg-1V-pQN"/>
+                                            <barButtonItem title="Cancel" id="0RS-rK-UT6">
+                                                <connections>
+                                                    <action selector="cancelButton:" destination="BYZ-38-t0r" id="Svk-n1-eXs"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                     <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="bottomText" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vne-g1-Snf" userLabel="BottomTextField">
@@ -67,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iN4-gc-W9v"/>
-                                    <barButtonItem title="Take Photo" id="xe9-hV-J06">
+                                    <barButtonItem title="Take Photo" image="camera" catalog="system" id="xe9-hV-J06">
                                         <connections>
                                             <action selector="takeAPhoto:" destination="BYZ-38-t0r" id="hFj-gs-SlC"/>
                                         </connections>
@@ -98,6 +104,7 @@
                         <outlet property="bottomTextField" destination="vne-g1-Snf" id="I4x-Qj-dhQ"/>
                         <outlet property="bottomToolbar" destination="Ess-n1-3Wv" id="Nmm-YY-jDx"/>
                         <outlet property="cameraButton" destination="xe9-hV-J06" id="MeM-D5-WdL"/>
+                        <outlet property="cancelButton" destination="0RS-rK-UT6" id="1bh-to-Zaa"/>
                         <outlet property="imageView" destination="DFW-Ga-ENu" id="Dpg-Rl-zDs"/>
                         <outlet property="shareButton" destination="iky-nY-8HD" id="8Cz-Ic-GWp"/>
                         <outlet property="topTextField" destination="jSI-zJ-1FO" id="z7f-Wh-uiG"/>
@@ -110,6 +117,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" catalog="system" width="128" height="96"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
